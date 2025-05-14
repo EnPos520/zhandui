@@ -244,6 +244,43 @@ int deQueue2(Queue2 *q, ElemType *val) {
 int isQueueEmpty2(Queue2 *q) {
     return q->front == NULL;
 }
+//链式循环#include <stdio.h>
+#include <stdlib.h>
+#include "list.h" // 请不要删除，否则检查不通过
+
+bool init_queue(LinkQueue *LQ) {
+    LinkQueueNode *head = (LinkQueueNode *) malloc(sizeof(LinkQueueNode));
+    if (!head) return false;
+    head->next = head;
+    *LQ = head;
+    return true;
+}
+
+bool enter_queue(LinkQueue *LQ, ElemType x) {
+    LinkQueueNode *newNode = (LinkQueueNode *) malloc(sizeof(LinkQueueNode));
+    if (!newNode) return false;
+    newNode->data = x;
+    newNode->next = (*LQ)->next;
+    (*LQ)->next = newNode;
+    *LQ = newNode;
+    return true;
+}
+
+bool leave_queue(LinkQueue *LQ, ElemType *x) {
+    if ((*LQ)->next == *LQ) {
+        return false;
+    }
+    LinkQueueNode *head = (*LQ)->next;
+    LinkQueueNode *front = head->next;
+    *x = front->data;
+    head->next = front->next;
+    if (front == *LQ) {
+        *LQ = head;
+    }
+    free(front);
+    return true;
+}
+
 int main() {
     Queue2 *q = InitQueue2();
     if (!q) return -1;
