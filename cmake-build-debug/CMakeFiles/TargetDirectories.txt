@@ -1,0 +1,3 @@
+C:/Users/27169/CLionProjects/zhandui/cmake-build-debug/CMakeFiles/zhandui.dir
+C:/Users/27169/CLionProjects/zhandui/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/27169/CLionProjects/zhandui/cmake-build-debug/CMakeFiles/rebuild_cache.dir
